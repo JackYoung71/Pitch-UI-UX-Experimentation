@@ -1,107 +1,175 @@
-<div style="width: 100%; height: 100%; padding: 150px; background: white; justify-content: flex-start; align-items: flex-start; gap: 32px; display: inline-flex">
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="align-self: stretch; height: 28px; color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Website</title>
+  <style>
+    /* Overall page styling */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ccc; /* Light grey */
+      font-family: Arial, sans-serif;
+      display: flex; /* We'll use flex to keep the left section & main section side by side */
+    }
+
+    /* Left customize toolbar styling */
+    .customize-toolbar {
+      background-color: #555; /* Dark grey */
+      width: 20%;
+      min-width: 200px; /* Optional: ensure a minimum width on small screens */
+      color: #fff;
+      padding: 1rem;
+    }
+
+    /* Main content area styling */
+    .main-section {
+      width: 80%;
+      padding: 1rem;
+    }
+
+    /* Form elements in the toolbar */
+    .customize-toolbar label {
+      font-weight: bold;
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .customize-toolbar .radio-group,
+    .customize-toolbar .checkbox-group {
+      margin-left: 1rem;
+    }
+
+    .customize-toolbar .radio-group input,
+    .customize-toolbar .checkbox-group input {
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Red clickable circle */
+    .click-circle {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-right: 2rem;
+      display: inline-block;
+    }
+
+    /* Big black rectangle */
+    .color-rectangle {
+      width: 200px;
+      height: 100px;
+      background-color: black;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Left Section: Customize Toolbar -->
+  <div class="customize-toolbar">
+    <h2>Customize Toolbar</h2>
+
+    <!-- Audience Size with radio buttons -->
+    <label for="audience">Audience Size</label>
+    <div id="audience" class="radio-group">
+      <div>
+        <input type="radio" name="audienceSize" value="1" id="audience-1" />
+        <label for="audience-1">1 person</label>
+      </div>
+      <div>
+        <input type="radio" name="audienceSize" value="2" id="audience-2" />
+        <label for="audience-2">2 people</label>
+      </div>
+      <div>
+        <input type="radio" name="audienceSize" value="3" id="audience-3" />
+        <label for="audience-3">3 people</label>
+      </div>
+      <div>
+        <input type="radio" name="audienceSize" value="5" id="audience-5" />
+        <label for="audience-5">5 people</label>
+      </div>
+      <div>
+        <input type="radio" name="audienceSize" value="10" id="audience-10" />
+        <label for="audience-10">10 people</label>
+      </div>
+      <div>
+        <input type="radio" name="audienceSize" value="20" id="audience-20" />
+        <label for="audience-20">20 people</label>
+      </div>
+      <div>
+        <input type="radio" name="audienceSize" value="50" id="audience-50" />
+        <label for="audience-50">50 people</label>
+      </div>
+      <div>
+        <input type="radio" name="audienceSize" value="100" id="audience-100" />
+        <label for="audience-100">100 people</label>
+      </div>
     </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="align-self: stretch; height: 28px; color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
+
+    <!-- Gestures with checkboxes -->
+    <label for="gestures">Gestures</label>
+    <div id="gestures" class="checkbox-group">
+      <div>
+        <input type="checkbox" name="gestures" value="Eye contact" id="eye-contact" />
+        <label for="eye-contact">Eye contact</label>
+      </div>
+      <div>
+        <input type="checkbox" name="gestures" value="Hand movement" id="hand-movement" />
+        <label for="hand-movement">Hand movement</label>
+      </div>
+      <div>
+        <input type="checkbox" name="gestures" value="Body Language" id="body-language" />
+        <label for="body-language">Body Language</label>
+      </div>
     </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="align-self: stretch; height: 28px; color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="align-self: stretch; height: 28px; color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="align-self: stretch; height: 28px; color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="align-self: stretch; height: 28px; color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="align-self: stretch; height: 28px; color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="align-self: stretch; height: 28px; color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-    <div style="width: 379px; height: 504px; padding: 24px; border-radius: 16px; border: 2px black solid; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; display: inline-flex">
-        <img style="align-self: stretch; height: 244px" src="https://via.placeholder.com/331x244" />
-        <div style="color: black; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">My First Hack-a-thon Win</div>
-        <div style="width: 355px; height: 175px; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.<br/>At SwampHacks X, I made a full stack website focused on helping students find Interviewing resources in one place. Using React, Express, and MySQL, this project placed first in the main track category.</div>
-    </div>
-</div>
+
+    <!-- Other with fill in the blank -->
+    <label for="otherInput">Other</label>
+    <input type="text" id="otherInput" name="other" placeholder="Type here..." />
+
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="main-section">
+    <!-- Red clickable circle & black rectangle -->
+    <div class="click-circle" id="clickCircle"></div>
+    <div class="color-rectangle" id="colorRectangle"></div>
+  </div>
+
+  <!-- Simple JavaScript to handle user selections and color change -->
+  <script>
+    // This variable will store the audience size chosen by the user.
+    let audienceSize = null;
+
+    // All radio buttons for audience size
+    const radioButtons = document.querySelectorAll('input[name="audienceSize"]');
+
+    // Add an event listener to each radio button
+    radioButtons.forEach((radio) => {
+      radio.addEventListener('change', () => {
+        audienceSize = radio.value; 
+        console.log("Audience Size selected:", audienceSize);
+      });
+    });
+
+    // Handle the circle click to change rectangle color
+    const circle = document.getElementById('clickCircle');
+    const rectangle = document.getElementById('colorRectangle');
+
+    circle.addEventListener('click', () => {
+      // Toggle between black and another color (e.g., green)
+      if (rectangle.style.backgroundColor === 'black') {
+        rectangle.style.backgroundColor = 'green';
+      } else {
+        rectangle.style.backgroundColor = 'black';
+      }
+    });
+  </script>
+</body>
+</html>
