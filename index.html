@@ -161,13 +161,21 @@
       });
     });
 
-    // Handle the circle click to toggle rectangle color
-   const circle = document.getElementById('clickCircle');
+ const circle = document.getElementById('clickCircle');
+const rectangle = document.getElementById('colorRectangle');
 
 circle.addEventListener('click', () => {
-  // Toggle the 'show-square' class to add or remove the white square
+  // 1. Toggle the white square inside the circle
   circle.classList.toggle('show-square');
+  
+  // 2. Toggle the rectangle color
+  if (rectangle.style.backgroundColor === 'black') {
+    rectangle.style.backgroundColor = 'green';
+  } else {
+    rectangle.style.backgroundColor = 'black';
+  }
 });
+
 
   </script>
 </body>
