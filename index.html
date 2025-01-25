@@ -55,7 +55,6 @@
       font-weight: normal; /* Remove bold for individual items if desired */
       margin-bottom: 0.5rem;
     }
-
 .click-circle {
   width: 50px;
   height: 50px;
@@ -63,14 +62,13 @@
   border-radius: 50%;
   cursor: pointer;
   margin-right: 2rem;
-  position: relative; /* IMPORTANT to position the pseudo-element */
+  position: relative; /* needed for pseudo-element */
 }
 
-
-/* Pseudo-element for the white square (initially hidden) */
+/* Pseudo-element for white square (hidden by default) */
 .click-circle::after {
   content: "";
-  display: none;            /* Start off hidden */
+  display: none;            /* start hidden */
   width: 20px;
   height: 20px;
   background-color: white;
@@ -80,10 +78,18 @@
   transform: translate(-50%, -50%);
 }
 
-/* When .show-square is added, display the pseudo-element */
+/* Show the white square when .show-square is toggled on */
 .click-circle.show-square::after {
   display: block;
 }
+
+/* The rectangle is always there */
+.color-rectangle {
+  width: 400px;   /* example width */
+  height: 100px;  /* example height */
+  background-color: black;
+}
+
 
   </style>
 </head>
@@ -165,15 +171,8 @@
 const rectangle = document.getElementById('colorRectangle');
 
 circle.addEventListener('click', () => {
-  // 1. Toggle the white square inside the circle
   circle.classList.toggle('show-square');
-  
-  // 2. Toggle the rectangle color
-  if (rectangle.style.backgroundColor === 'black') {
-    rectangle.style.backgroundColor = 'green';
-  } else {
-    rectangle.style.backgroundColor = 'black';
-  }
+
 });
 
 
