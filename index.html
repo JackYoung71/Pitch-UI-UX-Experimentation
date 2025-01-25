@@ -56,24 +56,35 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Red clickable circle */
-    .click-circle {
-      width: 50px;
-      height: 50px;
-      background-color: red;
-      border-radius: 50%;
-      cursor: pointer;
-      margin-right: 2rem; /* Spacing between circle and rectangle */
-    }
+.click-circle {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 2rem;
+  position: relative; /* IMPORTANT to position the pseudo-element */
+}
 
-    /* Big black rectangle (made longer) */
-    .color-rectangle {
-      width: 400px;         /* Increased width to make it longer */
-      height: 100px;
-      background-color: black;
-      display: inline-block;
-      vertical-align: middle;
-    }
+
+/* Pseudo-element for the white square (initially hidden) */
+.click-circle::after {
+  content: "";
+  display: none;            /* Start off hidden */
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* When .show-square is added, display the pseudo-element */
+.click-circle.show-square::after {
+  display: block;
+}
+
   </style>
 </head>
 <body>
@@ -90,32 +101,20 @@
         1 person
       </label>
       <label for="audience-2">
-        <input type="radio" name="audienceSize" value="2" id="audience-2" />
+        <input type="radio" name="audienceSize" value="2-4" id="audience-2-4" />
         2 people
       </label>
       <label for="audience-3">
-        <input type="radio" name="audienceSize" value="3" id="audience-3" />
+        <input type="radio" name="audienceSize" value="5-10" id="audience-5-10" />
         3 people
       </label>
       <label for="audience-5">
-        <input type="radio" name="audienceSize" value="5" id="audience-5" />
+        <input type="radio" name="audienceSize" value="10-30" id="audience-10-30" />
         5 people
       </label>
       <label for="audience-10">
-        <input type="radio" name="audienceSize" value="10" id="audience-10" />
+        <input type="radio" name="audienceSize" value="30+" id="audience-30+" />
         10 people
-      </label>
-      <label for="audience-20">
-        <input type="radio" name="audienceSize" value="20" id="audience-20" />
-        20 people
-      </label>
-      <label for="audience-50">
-        <input type="radio" name="audienceSize" value="50" id="audience-50" />
-        50 people
-      </label>
-      <label for="audience-100">
-        <input type="radio" name="audienceSize" value="100" id="audience-100" />
-        100 people
       </label>
     </div>
 
@@ -163,15 +162,13 @@
     });
 
     // Handle the circle click to toggle rectangle color
-    const circle = document.getElementById('clickCircle');
-    const rectangle = document.getElementById('colorRectangle');
-    circle.addEventListener('click', () => {
-      if (rectangle.style.backgroundColor === 'black') {
-        rectangle.style.backgroundColor = 'green';
-      } else {
-        rectangle.style.backgroundColor = 'black';
-      }
-    });
+   const circle = document.getElementById('clickCircle');
+
+circle.addEventListener('click', () => {
+  // Toggle the 'show-square' class to add or remove the white square
+  circle.classList.toggle('show-square');
+});
+
   </script>
 </body>
 </html>
