@@ -48,13 +48,12 @@
       margin-left: 1rem;
     }
 
-    /* Show inputs next to their text (instead of on separate lines) */
+    /* Each radio button on its own line */
     .radio-group label,
     .checkbox-group label {
-      display: inline-block;  /* keep the label and input on the same line */
-      margin-right: 1rem;
+      display: block;      /* Put each option on its own line */
+      font-weight: normal; /* Remove bold for individual items if desired */
       margin-bottom: 0.5rem;
-      font-weight: normal;    /* remove bold from the individual options if desired */
     }
 
     /* Red clickable circle */
@@ -64,12 +63,12 @@
       background-color: red;
       border-radius: 50%;
       cursor: pointer;
-      margin-right: 2rem; /* add spacing between circle and rectangle */
+      margin-right: 2rem; /* Spacing between circle and rectangle */
     }
 
-    /* Big black rectangle */
+    /* Big black rectangle (made longer) */
     .color-rectangle {
-      width: 200px;
+      width: 400px;         /* Increased width to make it longer */
       height: 100px;
       background-color: black;
       display: inline-block;
@@ -81,7 +80,7 @@
 
   <!-- Left Section: Customize Toolbar -->
   <div class="customize-toolbar">
-    <h2>Customize Toolbar</h2>
+    <h2>Customize</h2>
 
     <!-- Audience Size with radio buttons -->
     <label>Audience Size</label>
@@ -98,7 +97,6 @@
         <input type="radio" name="audienceSize" value="3" id="audience-3" />
         3 people
       </label>
-      <br/>
       <label for="audience-5">
         <input type="radio" name="audienceSize" value="5" id="audience-5" />
         5 people
@@ -111,7 +109,6 @@
         <input type="radio" name="audienceSize" value="20" id="audience-20" />
         20 people
       </label>
-      <br/>
       <label for="audience-50">
         <input type="radio" name="audienceSize" value="50" id="audience-50" />
         50 people
@@ -142,7 +139,6 @@
     <!-- Other with fill in the blank -->
     <label for="otherInput">Other</label>
     <input type="text" id="otherInput" name="other" placeholder="Type here..." />
-
   </div>
 
   <!-- Main Content Section -->
@@ -159,8 +155,6 @@
 
     // All radio buttons for audience size
     const radioButtons = document.querySelectorAll('input[name="audienceSize"]');
-
-    // Add an event listener to each radio button
     radioButtons.forEach((radio) => {
       radio.addEventListener('change', () => {
         audienceSize = radio.value;
@@ -171,9 +165,7 @@
     // Handle the circle click to toggle rectangle color
     const circle = document.getElementById('clickCircle');
     const rectangle = document.getElementById('colorRectangle');
-
     circle.addEventListener('click', () => {
-      // Toggle between black and green
       if (rectangle.style.backgroundColor === 'black') {
         rectangle.style.backgroundColor = 'green';
       } else {
