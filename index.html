@@ -6,19 +6,22 @@
   <title>Custom Website</title>
   <style>
     /* Overall page styling */
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       background-color: #ccc; /* Light grey */
       font-family: Arial, sans-serif;
-      display: flex; /* We'll use flex to keep the left section & main section side by side */
+      height: 100%; /* Allow full-height flex layout */
+    }
+    body {
+      display: flex; /* We'll use flex to keep the left toolbar & main section side by side */
     }
 
     /* Left customize toolbar styling */
     .customize-toolbar {
       background-color: #555; /* Dark grey */
       width: 20%;
-      min-width: 200px; /* Optional: ensure a minimum width on small screens */
+      min-width: 200px;
       color: #fff;
       padding: 1rem;
     }
@@ -26,10 +29,13 @@
     /* Main content area styling */
     .main-section {
       width: 80%;
-      padding: 1rem;
+      display: flex;
+      justify-content: center;  /* Center horizontally */
+      align-items: center;      /* Center vertically */
+      min-height: 100vh;        /* Occupy full viewport height */
     }
 
-    /* Form elements in the toolbar */
+    /* Labels for radio and checkbox groups */
     .customize-toolbar label {
       font-weight: bold;
       display: block;
@@ -37,15 +43,18 @@
       margin-bottom: 0.5rem;
     }
 
-    .customize-toolbar .radio-group,
-    .customize-toolbar .checkbox-group {
+    .radio-group,
+    .checkbox-group {
       margin-left: 1rem;
     }
 
-    .customize-toolbar .radio-group input,
-    .customize-toolbar .checkbox-group input {
-      margin-right: 0.5rem;
+    /* Show inputs next to their text (instead of on separate lines) */
+    .radio-group label,
+    .checkbox-group label {
+      display: inline-block;  /* keep the label and input on the same line */
+      margin-right: 1rem;
       margin-bottom: 0.5rem;
+      font-weight: normal;    /* remove bold from the individual options if desired */
     }
 
     /* Red clickable circle */
@@ -55,8 +64,7 @@
       background-color: red;
       border-radius: 50%;
       cursor: pointer;
-      margin-right: 2rem;
-      display: inline-block;
+      margin-right: 2rem; /* add spacing between circle and rectangle */
     }
 
     /* Big black rectangle */
@@ -76,57 +84,59 @@
     <h2>Customize Toolbar</h2>
 
     <!-- Audience Size with radio buttons -->
-    <label for="audience">Audience Size</label>
-    <div id="audience" class="radio-group">
-      <div>
+    <label>Audience Size</label>
+    <div class="radio-group">
+      <label for="audience-1">
         <input type="radio" name="audienceSize" value="1" id="audience-1" />
-        <label for="audience-1">1 person</label>
-      </div>
-      <div>
+        1 person
+      </label>
+      <label for="audience-2">
         <input type="radio" name="audienceSize" value="2" id="audience-2" />
-        <label for="audience-2">2 people</label>
-      </div>
-      <div>
+        2 people
+      </label>
+      <label for="audience-3">
         <input type="radio" name="audienceSize" value="3" id="audience-3" />
-        <label for="audience-3">3 people</label>
-      </div>
-      <div>
+        3 people
+      </label>
+      <br/>
+      <label for="audience-5">
         <input type="radio" name="audienceSize" value="5" id="audience-5" />
-        <label for="audience-5">5 people</label>
-      </div>
-      <div>
+        5 people
+      </label>
+      <label for="audience-10">
         <input type="radio" name="audienceSize" value="10" id="audience-10" />
-        <label for="audience-10">10 people</label>
-      </div>
-      <div>
+        10 people
+      </label>
+      <label for="audience-20">
         <input type="radio" name="audienceSize" value="20" id="audience-20" />
-        <label for="audience-20">20 people</label>
-      </div>
-      <div>
+        20 people
+      </label>
+      <br/>
+      <label for="audience-50">
         <input type="radio" name="audienceSize" value="50" id="audience-50" />
-        <label for="audience-50">50 people</label>
-      </div>
-      <div>
+        50 people
+      </label>
+      <label for="audience-100">
         <input type="radio" name="audienceSize" value="100" id="audience-100" />
-        <label for="audience-100">100 people</label>
-      </div>
+        100 people
+      </label>
     </div>
 
     <!-- Gestures with checkboxes -->
-    <label for="gestures">Gestures</label>
-    <div id="gestures" class="checkbox-group">
-      <div>
+    <label>Gestures</label>
+    <div class="checkbox-group">
+      <label for="eye-contact">
         <input type="checkbox" name="gestures" value="Eye contact" id="eye-contact" />
-        <label for="eye-contact">Eye contact</label>
-      </div>
-      <div>
+        Eye contact
+      </label>
+      <label for="hand-movement">
         <input type="checkbox" name="gestures" value="Hand movement" id="hand-movement" />
-        <label for="hand-movement">Hand movement</label>
-      </div>
-      <div>
+        Hand movement
+      </label>
+      <label for="body-language">
         <input type="checkbox" name="gestures" value="Body Language" id="body-language" />
-        <label for="body-language">Body Language</label>
-      </div>
+        Body Language
+      </label>
     </div>
 
     <!-- Other with fill in the blank -->
@@ -153,17 +163,17 @@
     // Add an event listener to each radio button
     radioButtons.forEach((radio) => {
       radio.addEventListener('change', () => {
-        audienceSize = radio.value; 
+        audienceSize = radio.value;
         console.log("Audience Size selected:", audienceSize);
       });
     });
 
-    // Handle the circle click to change rectangle color
+    // Handle the circle click to toggle rectangle color
     const circle = document.getElementById('clickCircle');
     const rectangle = document.getElementById('colorRectangle');
 
     circle.addEventListener('click', () => {
-      // Toggle between black and another color (e.g., green)
+      // Toggle between black and green
       if (rectangle.style.backgroundColor === 'black') {
         rectangle.style.backgroundColor = 'green';
       } else {
