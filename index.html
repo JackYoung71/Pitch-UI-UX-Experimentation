@@ -30,6 +30,48 @@
       color: #fff;
       padding: 1rem;
       box-sizing: border-box; /* Ensure padding is included in width */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative; /* For positioning child elements if needed */
+    }
+
+    /* Pitch Header with black rectangle */
+    .pitch-header {
+      width: 100%;
+      background-color: #000; /* Black background */
+      padding: 1rem; /* Padding inside the rectangle */
+      box-sizing: border-box; /* Include padding in width */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.5rem; /* Space below the header */
+    }
+
+    /* Pitch title and logo in sidebar */
+    .pitch-title-container-sidebar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pitch-circle-icon {
+      width: 50px; /* Increased size for better visibility */
+      height: 50px; /* Increased size for better visibility */
+      object-fit: contain; /* Ensures the entire logo is visible */
+    }
+    .pitch-title {
+      font-size: 2.5rem; /* Increased font size */
+      font-weight: bold; /* Made the title bold */
+      margin: 0;
+    }
+
+    /* Customize Toolbar Headings */
+    .customize-toolbar h2 {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
     }
 
     /* Main content area styling */
@@ -50,26 +92,18 @@
     /* Pitch Mode container in main-section */
     .pitch-mode-main {
       width: 100%;
-      max-width: 800px; /* Limit the width */
-      margin-bottom: 20px; /* Space below the dropdown */
+      max-width: 200px; /* Reduced width to ~1/4 of original size */
+      margin-bottom: 200px; /* Moved content below down by ~200px */
     }
 
-    /* Pitch title and logo in sidebar */
-    .pitch-title-container-sidebar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 1.5rem; /* Space below the title and logo */
-    }
-    .pitch-circle-icon {
-      width: 40px; /* Adjusted size as needed */
-      height: 40px; /* Adjusted size as needed */
-      object-fit: contain; /* Ensures the entire logo is visible */
-    }
-    .pitch-title {
-      font-size: 1.5rem;
-      font-weight: normal; /* Changed from 'regular' to 'normal' */
-      margin: 0;
+    /* Style the select dropdown for Pitch Mode in main-section */
+    .pitch-mode-main select {
+      width: 100%; /* 100% of the container's width (200px) */
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+      box-sizing: border-box; /* Ensure padding is included in width */
     }
 
     .circle-rectangle-response-container {
@@ -91,11 +125,14 @@
       display: block;
       margin-top: 1rem;
       margin-bottom: 0.5rem;
+      width: 100%;
+      text-align: left;
     }
     .radio-group,
     .checkbox-group,
     .pitch-mode-group { /* Added for Pitch Mode if needed */
       margin-left: 1rem;
+      width: 100%;
     }
     /* Put each radio/checkbox on its own line */
     .radio-group label,
@@ -193,20 +230,12 @@
       font-style: normal;
     }
 
-    /* Style the select dropdown for Pitch Mode in main-section */
-    .pitch-mode-main select {
-      width: 100%;
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: none;
-      font-size: 1rem;
-      box-sizing: border-box; /* Ensure padding is included in width */
-    }
-
     /* Style for the "Other" input and button */
     .customize-toolbar form {
       display: flex;
       flex-direction: column;
+      width: 100%;
+      margin-top: 1rem;
     }
     .customize-toolbar input[type="text"] {
       padding: 0.5rem;
@@ -214,6 +243,7 @@
       border: none;
       margin-bottom: 0.5rem;
       box-sizing: border-box; /* Ensure padding is included in width */
+      width: 100%;
     }
     .customize-toolbar button {
       padding: 0.5rem;
@@ -223,6 +253,7 @@
       color: #fff;
       cursor: pointer;
       font-size: 1rem;
+      width: 100%;
     }
     .customize-toolbar button:hover {
       background-color: #999;
@@ -234,13 +265,17 @@
 
   <!-- Left Section: Customize Toolbar -->
   <div class="customize-toolbar">
-    <!-- Moved Pitch Title and Logo to Sidebar -->
-    <div class="pitch-title-container-sidebar">
-      <img src="PitchLogo.png" alt="PitchLogo" class="pitch-circle-icon">
-      <h1 class="pitch-title">PITCH</h1>
+    <!-- Black Rectangle Header with Pitch Title and Logo -->
+    <div class="pitch-header">
+      <div class="pitch-title-container-sidebar">
+        <img src="PitchLogo.png" alt="PitchLogo" class="pitch-circle-icon">
+        <h1 class="pitch-title">PITCH</h1>
+      </div>
     </div>
 
     <h2>Customize</h2>
+
+    <!-- Pitch Mode Dropdown has been moved to Main Section, so no need here -->
 
     <!-- Audience Size with radio buttons -->
     <label>Audience Size</label>
