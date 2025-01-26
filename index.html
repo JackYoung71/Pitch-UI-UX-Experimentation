@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pitch</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+
   
   <style>
     /* Overall page styling */
@@ -40,7 +40,7 @@
       min-height: 100vh;          /* Occupy full viewport height */
       margin: 0 auto;
       position: relative;         /* So we can absolutely position the Pitch title */
-      font-family: 'IBM Plex Mono', monospace, "Courier New", monospace;
+      font-family: Arial, sans-serif; /* Default font for main-section */
     }
 
     /*
@@ -49,12 +49,12 @@
     */
     .pitch-title-container {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 10px; /* Added some spacing from the top */
+      left: 10px; /* Added some spacing from the left */
       display: flex;
       align-items: center;
       gap: 10px;
-      margin: 10px;
+      
     }
     .pitch-circle-icon {
       width: 30px;
@@ -65,8 +65,9 @@
     .pitch-title {
       font-size: 2rem;
       font-weight: bold;
-      font: MonoLisa;
       margin: 0;
+      
+      /* Removed incorrect font property */
     }
 
     .circle-rectangle-response-container {
@@ -157,28 +158,36 @@
     /* Response section below */
     .response-section {
       margin-top: 20px; /* Space above the response section */
+      width: 700px; /* Match the rectangle's width */
     }
 
     /* Make the label appear above the textarea */
     .response-section label {
       display: block;
       margin-bottom: 5px; /* small gap above the textarea */
+      font-weight: bold;
     }
 
     /*
-      Match the rectangle's width (700px) and
-      be 200px tall (instead of 1000px).
+      Style the textarea to use the "GT" font and make it 200px tall
     */
     #response {
-      width: 800px;
-      height: 300px;
+      width: 700px; /* Match the rectangle's width */
+      height: 200px; /* Set height to 200px */
       font-size: 1rem;  /* Adjust text size if needed */
       resize: none;     /* Remove manual resizer handle (optional) */
-      
+      font-family: 'GT', monospace; /* Apply the "GT" font */
+      font-weight: bold; /* Make text bold */
     }
 
-    
-  
+    /* Define the "GT" font using @font-face */
+    @font-face {
+      font-family: 'GT';
+      src: url('GT-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
   </style>
 </head>
 <body>
@@ -263,7 +272,7 @@
           <!-- Replace src with your actual image if needed -->
           <img
             src="soundwaves.png"
-            alt="I love boobs"
+            alt="Overlay Image"
             class="overlay-image"
             id="overlayImage"
           >
