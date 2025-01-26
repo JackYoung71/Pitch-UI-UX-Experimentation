@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +29,12 @@
     /* Main content area styling */
     .main-section {
       width: 80%;
+      /* Use flex to place items vertically in a column */
       display: flex;
-      justify-content: center;  /* Center horizontally */
-      align-items: center;      /* Center vertically */
-      min-height: 100vh;        /* Occupy full viewport height */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Occupy full viewport height */
     }
 
     /* Labels for radio and checkbox groups */
@@ -53,170 +53,4 @@
     /* Each radio button on its own line */
     .radio-group label,
     .checkbox-group label {
-      display: block;      /* Put each option on its own line */
-      font-weight: normal; /* Remove bold for individual items if desired */
-      margin-bottom: 0.5rem;
-    }
-
-  .click-circle {
-      width: 100px;
-      height: 100px;
-      background-color: red;
-      border-radius: 50%;
-      display: inline-block;      /* Or float: left; */
-      position: relative;         /* So the white square can be positioned inside */
-      cursor: pointer;            /* Show that it's clickable */
-      margin-right: 20px;         /* Spacing before the black rectangle */
-    }
-
-    /* The white square that starts hidden */
-    .white-square {
-      width: 50px;
-      height: 50px;
-      background-color: white;
-
-      /* Position it in the center of the circle */
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      display: none; /* Hidden by default */
-    }
-
-    /* When the circle has the .show-square class, show the white square */
-    .click-circle.show-square .white-square {
-      display: block;
-    }
-
-    /* Black rectangle */
-    .color-rectangle {
-      width: 100px;
-      height: 50px;
-      background-color: black;
-      display: inline-block;  /* or float: left; */
-    }
-
-    /* Ensure the response section goes underneath */
-    .response-section {
-      clear: both;     /* Push below floated or inline elements */
-      margin-top: 20px;
-    }
-
-    
-</style>
-</head>
-<body>
-
-  <!-- Left Section: Customize Toolbar -->
-  <div class="customize-toolbar">
-    <h2>Customize</h2>
-
-    <!-- Audience Size with radio buttons -->
-    <label>Audience Size</label>
-    <div class="radio-group">
-      <label for="audience-1">
-        <input type="radio" name="audienceSize" value="1" id="audience-1" />
-        1 person
-      </label>
-      <label for="audience-2">
-        <input type="radio" name="audienceSize" value="2-4" id="audience-2-4" />
-        2-4 people
-      </label>
-      <label for="audience-3">
-        <input type="radio" name="audienceSize" value="5-10" id="audience-5-10" />
-        5-10 people
-      </label>
-      <label for="audience-5">
-        <input type="radio" name="audienceSize" value="10-30" id="audience-10-30" />
-        10-30 people
-      </label>
-      <label for="audience-10">
-        <input type="radio" name="audienceSize" value="30+" id="audience-30+" />
-       30+ people
-      </label>
-    </div>
-
-    <!-- Gestures with checkboxes -->
-    <label>Specifics</label>
-    <div class="checkbox-group">
-      <label for="Stuttering">
-        <input type="checkbox" name="Stuttering" value="Stuttering" id="Stuttering" />
-        Stuttering
-      </label>
-      <label for="Language">
-        <input type="checkbox" name="Language/Vocabulary" value="Language/Vocabulary" id="Language" />
-        Language/Vocabulary
-      </label>
-      <label for="Tone">
-        <input type="checkbox" name="Tone & Mood" value="Tone & Mood" id="Tone" />
-        Tone & Mood
-      </label>
-       <label for="Volume">
-        <input type="checkbox" name="Volume" value="Volume" id="Volume" />
-        Volume
-      </label>
-    </div>
-
-    <!-- Other with fill in the blank -->
-      <form onsubmit="return captureAndUpdate();">
-    <label for="other">Other:</label>
-    <input type="text" id="other" name="Other" placeholder="Type here..." required>
-    <button type="submit">Enter</button>
-  </form>
-  </div>
-
-  <
-<div class="main-section">
-  <!-- Red clickable circle -->
-  <div class="click-circle" id="clickCircle">
-    <!-- White square hidden inside -->
-    <div class="white-square" id="whiteSquare"></div>
-  </div>
-
-  <!-- Black rectangle -->
-  <div class="color-rectangle" id="colorRectangle"></div>   
-
-  <!-- Response section below -->
-  <div class="response-section">
-    <label for="response">Response:</label>
-    <input type="text" id="response" name="Response" placeholder="Enter something...">
-  </div>
-</div>
-
-
-  <!-- Simple JavaScript to handle user selections and color change -->
-   <meta charset="UTF-8">
-  <script>
-    function captureAndUpdate() {
-      // Get the text typed into the first text box
-      let userInput = document.getElementById("other").value;
-
-      // Set the second text box to display the same text
-      document.getElementById("response").value = userInput;
-
-      // Return false to prevent the page from refreshing
-      return false;
-    }
-    // This variable will store the audience size chosen by the user.
-    let audienceSize = null;
-
-    // All radio buttons for audience size
-    const radioButtons = document.querySelectorAll('input[name="audienceSize"]');
-    radioButtons.forEach((radio) => {
-      radio.addEventListener('change', () => {
-        audienceSize = radio.value;
-        console.log("Audience Size selected:", audienceSize);
-      });
-    });
-
- const circle = document.getElementById("clickCircle");
-  circle.addEventListener("click", function() {
-    circle.classList.toggle("show-square");
-  });
-
-
-  </script>
-</body>
-</html>
-
+      display: block;      /* Put each
