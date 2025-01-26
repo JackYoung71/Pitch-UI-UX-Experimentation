@@ -29,6 +29,7 @@
       min-width: 200px;
       color: #fff;
       padding: 1rem;
+      box-sizing: border-box; /* Ensure padding is included in width */
     }
 
     /* Main content area styling */
@@ -37,25 +38,28 @@
       width: 80%;
       display: flex;
       flex-direction: column;
-      justify-content: center;    /* Center them vertically */
-      align-items: center;        /* Center them horizontally */
-      min-height: 100vh;          /* Occupy full viewport height */
+      justify-content: flex-start; /* Align items to the top */
+      align-items: center;         /* Center them horizontally */
+      min-height: 100vh;           /* Occupy full viewport height */
       margin: 0 auto;
-      position: relative;         /* So we can absolutely position the Pitch title */
+      padding: 2rem;               /* Add some padding */
+      box-sizing: border-box;      /* Ensure padding is included in width */
       font-family: Arial, sans-serif; /* Default font for main-section */
     }
 
-    /*
-      Absolutely positioned container for the red circle and "Pitch" heading
-      in the top-left corner of .main-section. This won't shift other elements.
-    */
-    .pitch-title-container {
-      position: absolute;
-      top: 10px; /* Added some spacing from the top */
-      left: 10px; /* Added some spacing from the left */
+    /* Pitch Mode container in main-section */
+    .pitch-mode-main {
+      width: 100%;
+      max-width: 800px; /* Limit the width */
+      margin-bottom: 20px; /* Space below the dropdown */
+    }
+
+    /* Pitch title and logo in sidebar */
+    .pitch-title-container-sidebar {
       display: flex;
       align-items: center;
       gap: 10px;
+      margin-bottom: 1.5rem; /* Space below the title and logo */
     }
     .pitch-circle-icon {
       width: 40px; /* Adjusted size as needed */
@@ -63,7 +67,7 @@
       object-fit: contain; /* Ensures the entire logo is visible */
     }
     .pitch-title {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: normal; /* Changed from 'regular' to 'normal' */
       margin: 0;
     }
@@ -90,7 +94,7 @@
     }
     .radio-group,
     .checkbox-group,
-    .pitch-mode-group { /* Added for Pitch Mode */
+    .pitch-mode-group { /* Added for Pitch Mode if needed */
       margin-left: 1rem;
     }
     /* Put each radio/checkbox on its own line */
@@ -171,12 +175,14 @@
       Style the textarea to use the "GT" font and make it 200px tall
     */
     #response {
-      width: 800px; /* Match the rectangle's width */
+      width: 100%; /* Use full width of container */
       height: 200px; /* Set height to 200px */
       font-size: 1rem;  /* Adjust text size if needed */
       resize: none;     /* Remove manual resizer handle (optional) */
       font-family: 'GT', monospace; /* Apply the "GT" font */
       font-weight: regular; /* Make text bold */
+      padding: 0.5rem; /* Add some padding */
+      box-sizing: border-box; /* Ensure padding is included in width */
     }
 
     /* Define the "GT" font using @font-face */
@@ -187,13 +193,39 @@
       font-style: normal;
     }
 
-    /* Optional: Style the select dropdown for Pitch Mode */
-    .pitch-mode-group select {
+    /* Style the select dropdown for Pitch Mode in main-section */
+    .pitch-mode-main select {
       width: 100%;
       padding: 0.5rem;
       border-radius: 5px;
       border: none;
       font-size: 1rem;
+      box-sizing: border-box; /* Ensure padding is included in width */
+    }
+
+    /* Style for the "Other" input and button */
+    .customize-toolbar form {
+      display: flex;
+      flex-direction: column;
+    }
+    .customize-toolbar input[type="text"] {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 0.5rem;
+      box-sizing: border-box; /* Ensure padding is included in width */
+    }
+    .customize-toolbar button {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      background-color: #777;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .customize-toolbar button:hover {
+      background-color: #999;
     }
 
   </style>
@@ -202,18 +234,13 @@
 
   <!-- Left Section: Customize Toolbar -->
   <div class="customize-toolbar">
-    <h2>Customize</h2>
-
-    <!-- Added Pitch Mode Dropdown -->
-    <label>Pitch Mode</label>
-    <div class="pitch-mode-group">
-      <select id="pitchMode" name="PitchMode">
-        <option value="audioOnly" selected>Audio Only</option>
-        <option value="videoOfPitch">Video of Pitch</option>
-        <option value="presentationSlides">Presentation Slides</option>
-      </select>
+    <!-- Moved Pitch Title and Logo to Sidebar -->
+    <div class="pitch-title-container-sidebar">
+      <img src="PitchLogo.png" alt="PitchLogo" class="pitch-circle-icon">
+      <h1 class="pitch-title">PITCH</h1>
     </div>
-    <!-- End of Pitch Mode Dropdown -->
+
+    <h2>Customize</h2>
 
     <!-- Audience Size with radio buttons -->
     <label>Audience Size</label>
@@ -236,7 +263,7 @@
       </label>
       <label for="audience-30+">
         <input type="radio" name="audienceSize" value="30+" id="audience-30+" />
-       30+ people
+        30+ people
       </label>
     </div>
 
@@ -255,7 +282,7 @@
         <input type="checkbox" name="Tone & Mood" value="Tone & Mood" id="Tone" />
         Tone & Mood
       </label>
-       <label for="Volume">
+      <label for="Volume">
         <input type="checkbox" name="Volume" value="Volume" id="Volume" />
         Volume
       </label>
@@ -271,10 +298,14 @@
 
   <!-- Main Section (right side) -->
   <div class="main-section">
-    <!-- Absolutely positioned "Pitch" title in top-left corner -->
-    <div class="pitch-title-container">
-      <img src="PitchLogo.png" alt="PitchLogo" class="pitch-circle-icon">
-      <h1 class="pitch-title">PITCH</h1>
+    <!-- Pitch Mode Dropdown moved to Main Section -->
+    <div class="pitch-mode-main">
+      <label for="pitchMode">Pitch Mode</label>
+      <select id="pitchMode" name="PitchMode">
+        <option value="audioOnly" selected>Audio Only</option>
+        <option value="videoOfPitch">Video of Pitch</option>
+        <option value="presentationSlides">Presentation Slides</option>
+      </select>
     </div>
 
     <!-- Container that holds circle/rectangle row + response below -->
