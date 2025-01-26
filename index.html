@@ -31,34 +31,25 @@
     .main-section {
       /* Occupies the remaining 80% of width */
       width: 80%;
-
-      /* Center child containers horizontally, and stack them vertically */
       display: flex;
       flex-direction: column;
-      justify-content: center;    /* Center them vertically in the viewport */
+      justify-content: center;    /* Center them vertically */
       align-items: center;        /* Center them horizontally */
       min-height: 100vh;          /* Occupy full viewport height */
-      margin: 0 auto;            /* Additional measure to keep it nicely centered */
+      margin: 0 auto;
     }
 
-    /*
-      This container will hold:
-       1) The circle + rectangle row at the top
-       2) The response section below
-      We align these items to the left inside this container, even though
-      the container itself is centered by .main-section.
-    */
     .circle-rectangle-response-container {
       display: flex;
       flex-direction: column;
       align-items: flex-start;  /* Left-align the items internally */
     }
 
-    /* Circle + rectangle container side by side */
+    /* Circle + rectangle side by side */
     .circle-rectangle-container {
       display: flex;
-      gap: 20px;               /* Space between circle and rectangle */
-      margin-bottom: 20px;     /* Extra space before the response section */
+      gap: 20px; /* Space between circle and rectangle */
+      margin-bottom: 20px;
     }
 
     /* Labels for radio and checkbox groups in the sidebar */
@@ -74,11 +65,11 @@
       margin-left: 1rem;
     }
 
-    /* Each radio button on its own line */
+    /* Put each radio/checkbox on its own line */
     .radio-group label,
     .checkbox-group label {
-      display: block;         /* Put each option on its own line */
-      font-weight: normal;    /* Remove bold for individual items if desired */
+      display: block;
+      font-weight: normal;
       margin-bottom: 0.5rem;
     }
 
@@ -89,62 +80,72 @@
       background-color: red;
       border-radius: 50%;
       position: relative;   /* For the white square inside */
-      cursor: pointer;      /* Show that it's clickable */
+      cursor: pointer;
     }
 
-    /* The white square (starts hidden) */
+    /* White square inside the circle (starts hidden) */
     .white-square {
       width: 50px;
       height: 50px;
       background-color: white;
-      /* Center it inside the circle */
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       display: none; /* Hidden by default */
     }
-
-    /* When the circle has the .show-square class, show the white square */
     .click-circle.show-square .white-square {
       display: block;
     }
 
-    /* Container that holds the black rectangle AND the overlay image */
+    /* Rectangle + overlay container */
     .rectangle-wrapper {
-      position: relative;    /* So the image can be absolutely positioned on top */
+      position: relative;
       width: 700px;
       height: 100px;
     }
-
-    /* Black rectangle */
     .color-rectangle {
       width: 100%;
       height: 100%;
       background-color: black;
-      border-radius: 25px;  /* Curved corners */
-      position: absolute;   /* Stacks behind the image */
+      border-radius: 25px;
+      position: absolute;
       top: 0;
       left: 0;
       z-index: 1;
     }
-
-    /* Image that appears in front of the rectangle */
     .overlay-image {
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 2;           /* Above the rectangle */
+      z-index: 2; /* Above rectangle */
       width: 100%;
       height: 100%;
-      object-fit: cover;    /* Or 'contain' if you want to show entire image */
-      display: none;        /* Hidden by default; toggled by JS */
-      border-radius: 25px;  /* Match the rectangle's corner radius, if desired */
+      object-fit: cover; /* or 'contain' */
+      display: none;
+      border-radius: 25px;
     }
 
-    /* Response section goes below the circle & rectangle */
+    /* Response section below */
     .response-section {
       margin-top: 20px; /* Space above the response section */
+    }
+
+    /* Make the label appear above the textarea */
+    .response-section label {
+      display: block;
+      margin-bottom: 5px; /* small gap above the textarea */
+    }
+
+    /*
+      Match the rectangle's width (700px) and
+      be ~10 times taller than the 100px rectangle = 1000px
+    */
+    #response {
+      width: 700px;
+      height: 1000px;
+      font-size: 1rem;  /* Adjust text size if needed */
+      resize: none;     /* Remove manual resizer handle (optional) */
     }
   </style>
 </head>
@@ -208,9 +209,9 @@
     </form>
   </div>
 
-  <!-- Main Section -->
+  <!-- Main Section (right side) -->
   <div class="main-section">
-    <!-- Parent container that is centered by .main-section, but left-aligns its contents -->
+    <!-- This container is centered horizontally, but internally left-aligns its items -->
     <div class="circle-rectangle-response-container">
       <div class="circle-rectangle-container">
         <!-- Red circle + white square -->
@@ -221,9 +222,9 @@
         <!-- Rectangle wrapper for black rectangle + overlay image -->
         <div class="rectangle-wrapper">
           <div class="color-rectangle" id="colorRectangle"></div>
-          <!-- Replace the src with your actual image -->
+          <!-- Replace src with your actual image if needed -->
           <img
-            src="soundwaves.png" 
+            src="soundwaves.png"
             alt="I love boobs"
             class="overlay-image"
             id="overlayImage"
@@ -231,10 +232,10 @@
         </div>
       </div>
 
-      <!-- Response section below, left-aligned with circle above -->
+      <!-- Response section below, label above the textbox -->
       <div class="response-section">
         <label for="response">Response:</label>
-        <input type="text" id="response" name="Response" placeholder="Enter something...">
+        <textarea id="response" name="Response" placeholder="Enter something..."></textarea>
       </div>
     </div>
   </div>
@@ -242,15 +243,15 @@
   <!-- JavaScript -->
   <script>
     function captureAndUpdate() {
-      // Get the text typed into the first text box
+      // Get the text typed into the 'Other' text box
       let userInput = document.getElementById("other").value;
-      // Set the second text box to display the same text
+      // Put the text into the 'response' textarea
       document.getElementById("response").value = userInput;
-      // Return false to prevent page refresh
+      // Prevent page refresh
       return false;
     }
 
-    // Audience Size
+    // Handle Audience Size radio buttons
     let audienceSize = null;
     const radioButtons = document.querySelectorAll('input[name="audienceSize"]');
     radioButtons.forEach((radio) => {
@@ -265,10 +266,10 @@
     const overlayImage = document.getElementById("overlayImage");
 
     circle.addEventListener("click", function() {
-      // Toggle the white square inside the circle
+      // Toggle the white square
       circle.classList.toggle("show-square");
 
-      // Toggle the overlay image in front of the black rectangle
+      // Toggle the overlay image
       if (overlayImage.style.display === "none" || overlayImage.style.display === "") {
         overlayImage.style.display = "block";
       } else {
