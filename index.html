@@ -30,21 +30,20 @@
     .main-section {
       width: 80%;
       display: flex;
-      /* The key: stack elements vertically instead of side by side */
-      flex-direction: column;
-      justify-content: center;  /* Center content vertically */
-      align-items: center;      /* Center content horizontally */
-      min-height: 100vh;        /* Occupy full viewport height */
+      flex-direction: column;     /* Stack elements vertically */
+      justify-content: center;    /* Center them vertically */
+      align-items: center;        /* Center them horizontally */
+      min-height: 100vh;          /* Occupy full viewport height */
     }
 
     /* Circle + rectangle container (so they can appear side by side at the top) */
     .circle-rectangle-container {
       display: flex;
-      gap: 20px; /* Space between circle and rectangle */
-      margin-bottom: 20px; /* Extra space below them before the response section */
+      gap: 20px;                  /* Space between circle and rectangle container */
+      margin-bottom: 20px;        /* Extra space below them before the response section */
     }
 
-    /* Labels for radio and checkbox groups */
+    /* Labels for radio and checkbox groups in the sidebar */
     .customize-toolbar label {
       font-weight: bold;
       display: block;
@@ -95,15 +94,39 @@
       display: block;
     }
 
-    /* Black rectangle */
-    .color-rectangle {
+    /* Container that holds the black rectangle AND the overlay image */
+    .rectangle-wrapper {
+      position: relative;    /* So the image can be absolutely positioned on top */
       width: 700px;
       height: 100px;
-      background-color: black;
-      border-radius: 10px;
     }
 
-    /* Response section goes below the circle & rectangle */
+    /* Black rectangle */
+    .color-rectangle {
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      border-radius: 25px;  /* Curved corners */
+      position: absolute;   /* Stacks behind the image */
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    /* Image that appears in front of the rectangle */
+    .overlay-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;           /* Above the rectangle */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;    /* Or 'contain' if you want to show entire image */
+      display: none;        /* Hidden by default; toggled by JS */
+      border-radius: 25px;  /* Match the rectangle's corner radius, if desired */
+    }
+
+    /* Response section goes below */
     .response-section {
       margin-top: 20px; /* Space above the response section */
     }
@@ -172,12 +195,22 @@
   <!-- Main Section -->
   <div class="main-section">
     <div class="circle-rectangle-container">
-      <!-- Red circle -->
+      <!-- Red circle + white square -->
       <div class="click-circle" id="clickCircle">
         <div class="white-square" id="whiteSquare"></div>
       </div>
-      <!-- Black rectangle -->
-      <div class="color-rectangle" id="colorRectangle"></div>
+
+      <!-- Rectangle wrapper for black rectangle + overlay image -->
+      <div class="rectangle-wrapper">
+        <div class="color-rectangle" id="colorRectangle"></div>
+        <!-- Replace the src with your actual image -->
+        <img
+          src="https://via.placeholder.com/700x100.png?text=Overlay+Image"
+          alt="Overlay"
+          class="overlay-image"
+          id="overlayImage"
+        >
+      </div>
     </div>
 
     <!-- Response section below -->
@@ -208,10 +241,20 @@
       });
     });
 
-    // Circle toggle to show the white square
+    // Circle toggle to show/hide the white square + overlay image
     const circle = document.getElementById("clickCircle");
+    const overlayImage = document.getElementById("overlayImage");
+
     circle.addEventListener("click", function() {
+      // Toggle the white square inside the circle
       circle.classList.toggle("show-square");
+
+      // Toggle the overlay image in front of the black rectangle
+      if (overlayImage.style.display === "none" || overlayImage.style.display === "") {
+        overlayImage.style.display = "block";
+      } else {
+        overlayImage.style.display = "none";
+      }
     });
   </script>
 </body>
