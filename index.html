@@ -152,7 +152,7 @@
 
     <!-- Other with fill in the blank -->
       <form onsubmit="return captureAndUpdate();">
-    <label for="other">Type something:</label>
+    <label for="other">Other:</label>
     <input type="text" id="other" name="Other" placeholder="Type here..." required>
     <button type="submit">Enter</button>
   </form>
@@ -163,9 +163,11 @@
     <!-- Red clickable circle & black rectangle -->
       <div class="click-circle" id="clickCircle"></div>
       <div class="color-rectangle" id="colorRectangle"></div>   
-    <br>
-    <label for="Response">This second text box will be updated:</label>
-  <input type="text" id="response" name="Response" placeholder="Will update after you submit above...">
+
+  <div class="response-section">
+    <label for="Response">Response:</label>
+    <input type="text" id="response" name="Response" placeholder="Will update after you submit above...">
+  </div>
   </div>
 
   <!-- Simple JavaScript to handle user selections and color change -->
