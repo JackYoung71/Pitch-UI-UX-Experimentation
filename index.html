@@ -28,32 +28,22 @@
       width: 20%;
       min-width: 200px;
       color: #fff;
-      padding: 1rem;
+      padding: 0; /* Remove existing padding to handle it within child elements */
       box-sizing: border-box; /* Ensure padding is included in width */
+      position: relative; /* For any absolute positioning if needed */
       display: flex;
       flex-direction: column;
-      align-items: center;
-      position: relative; /* For positioning child elements if needed */
     }
 
-    /* Pitch Header with black rectangle */
-    .pitch-header {
-      width: 100%;
+    /* Black header container for PITCH title and logo */
+    .header-container {
       background-color: #000; /* Black background */
-      padding: 1rem; /* Padding inside the rectangle */
-      box-sizing: border-box; /* Include padding in width */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 1.5rem; /* Space below the header */
-    }
-
-    /* Pitch title and logo in sidebar */
-    .pitch-title-container-sidebar {
+      width: 100%;
+      padding: 1rem; /* Padding inside the header */
       display: flex;
       align-items: center;
       gap: 10px;
+      box-sizing: border-box;
     }
     .pitch-circle-icon {
       width: 50px; /* Increased size for better visibility */
@@ -62,16 +52,13 @@
     }
     .pitch-title {
       font-size: 2.5rem; /* Increased font size */
-      font-weight: bold; /* Made the title bold */
+      font-weight: bold; /* Make the title bold */
       margin: 0;
     }
 
-    /* Customize Toolbar Headings */
-    .customize-toolbar h2 {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
+    /* Spacer to create space below the header */
+    .toolbar-spacer {
+      height: 0; /* No height initially */
     }
 
     /* Main content area styling */
@@ -81,24 +68,28 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start; /* Align items to the top */
-      align-items: center;         /* Center them horizontally */
-      min-height: 100vh;           /* Occupy full viewport height */
+      align-items: flex-start;      /* Align items to the left */
+      min-height: 100vh;            /* Occupy full viewport height */
       margin: 0 auto;
-      padding: 2rem;               /* Add some padding */
-      box-sizing: border-box;      /* Ensure padding is included in width */
+      padding: 2rem;                /* Add some padding */
+      box-sizing: border-box;       /* Ensure padding is included in width */
       font-family: Arial, sans-serif; /* Default font for main-section */
+      position: relative;           /* For any absolute positioning if needed */
     }
 
     /* Pitch Mode container in main-section */
     .pitch-mode-main {
-      width: 100%;
-      max-width: 200px; /* Reduced width to ~1/4 of original size */
-      margin-bottom: 200px; /* Moved content below down by ~200px */
+      width: 25%; /* Approximately 1/4 of its current size */
+      max-width: 200px; /* Optional: limit maximum width */
+      margin-bottom: 150px; /* Move everything below down by 150px */
     }
-
-    /* Style the select dropdown for Pitch Mode in main-section */
+    .pitch-mode-main label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
     .pitch-mode-main select {
-      width: 100%; /* 100% of the container's width (200px) */
+      width: 100%;
       padding: 0.5rem;
       border-radius: 5px;
       border: none;
@@ -106,6 +97,7 @@
       box-sizing: border-box; /* Ensure padding is included in width */
     }
 
+    /* Container that holds circle/rectangle row + response below */
     .circle-rectangle-response-container {
       display: flex;
       flex-direction: column;
@@ -117,6 +109,7 @@
       display: flex;
       gap: 20px; /* Space between circle and rectangle */
       margin-bottom: 20px;
+      align-items: center; /* Ensure vertical alignment */
     }
 
     /* Labels for radio and checkbox groups in the sidebar */
@@ -125,14 +118,10 @@
       display: block;
       margin-top: 1rem;
       margin-bottom: 0.5rem;
-      width: 100%;
-      text-align: left;
     }
     .radio-group,
-    .checkbox-group,
-    .pitch-mode-group { /* Added for Pitch Mode if needed */
+    .checkbox-group {
       margin-left: 1rem;
-      width: 100%;
     }
     /* Put each radio/checkbox on its own line */
     .radio-group label,
@@ -230,12 +219,11 @@
       font-style: normal;
     }
 
-    /* Style for the "Other" input and button */
+    /* Style the "Other" input and button in the sidebar */
     .customize-toolbar form {
       display: flex;
       flex-direction: column;
-      width: 100%;
-      margin-top: 1rem;
+      padding: 1rem; /* Add padding inside the form */
     }
     .customize-toolbar input[type="text"] {
       padding: 0.5rem;
@@ -243,7 +231,6 @@
       border: none;
       margin-bottom: 0.5rem;
       box-sizing: border-box; /* Ensure padding is included in width */
-      width: 100%;
     }
     .customize-toolbar button {
       padding: 0.5rem;
@@ -253,29 +240,29 @@
       color: #fff;
       cursor: pointer;
       font-size: 1rem;
-      width: 100%;
     }
     .customize-toolbar button:hover {
       background-color: #999;
     }
-
   </style>
 </head>
 <body>
 
   <!-- Left Section: Customize Toolbar -->
   <div class="customize-toolbar">
-    <!-- Black Rectangle Header with Pitch Title and Logo -->
-    <div class="pitch-header">
-      <div class="pitch-title-container-sidebar">
-        <img src="PitchLogo.png" alt="PitchLogo" class="pitch-circle-icon">
-        <h1 class="pitch-title">PITCH</h1>
-      </div>
+    <!-- Black Header Container with PITCH Logo and Title -->
+    <div class="header-container">
+      <img src="PitchLogo.png" alt="PitchLogo" class="pitch-circle-icon">
+      <h1 class="pitch-title">PITCH</h1>
     </div>
 
-    <h2>Customize</h2>
+    <!-- Spacer to maintain alignment -->
+    <div class="toolbar-spacer"></div>
 
-    <!-- Pitch Mode Dropdown has been moved to Main Section, so no need here -->
+    <h2 style="padding-left: 1rem;">Customize</h2>
+
+    <!-- Pitch Mode Dropdown (Originally in Main Section) -->
+    <!-- Note: Moved back to Main Section as per previous instructions -->
 
     <!-- Audience Size with radio buttons -->
     <label>Audience Size</label>
