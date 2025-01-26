@@ -86,7 +86,7 @@
     .pitch-mode-controls {
       display: flex;
       align-items: center;
-      gap: 10px; /* Space between dropdown and upload button */
+      gap: 10px; /* Space between dropdown and upload section */
     }
     .pitch-mode-controls select {
       flex: 1; /* Take up available space */
@@ -95,6 +95,17 @@
       border: none;
       font-size: 1rem;
       box-sizing: border-box; /* Ensure padding is included in width */
+    }
+    /* Container for upload label and button */
+    .upload-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .upload-label {
+      margin-bottom: 5px;
+      font-weight: normal;
+      font-size: 0.9rem;
     }
     .upload-button {
       display: inline-block;
@@ -343,9 +354,12 @@
           <option value="videoOfPitch">Video of Pitch</option>
           <option value="presentationSlides">Presentation Slides</option>
         </select>
-        <!-- Upload Audio Button -->
-        <label for="uploadAudio" class="upload-button">Upload Audio</label>
-        <input type="file" id="uploadAudio" name="uploadAudio" accept="audio/*">
+        <!-- Upload Container with Label and Button -->
+        <div class="upload-container">
+          <label for="uploadAudio" class="upload-label">Upload Your Speech</label>
+          <label for="uploadAudio" class="upload-button">Upload Audio</label>
+          <input type="file" id="uploadAudio" name="uploadAudio" accept="audio/*">
+        </div>
       </div>
     </div>
 
