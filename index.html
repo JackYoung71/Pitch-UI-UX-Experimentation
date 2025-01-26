@@ -1,33 +1,87 @@
-<style>
-  /* Example float styles for the circle and rectangle */
-  .click-circle {
-    float: left;
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    border-radius: 50%;
-    margin-right: 10px; /* Space between circle and rectangle */
-  }
-  .color-rectangle {
-    float: left;
-    width: 100px;
-    height: 50px;
-    background-color: black;
-  }
-  .response-section {
-    clear: both; /* This makes the label/input appear BELOW the floated elements */
-    margin-top: 10px; /* Optional spacing */
-  }
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>White Square in Circle</title>
+  <style>
+    /* Container for circle, rectangle, and response */
+    .main-section {
+      /* Just optional styling or layout if needed */
+    }
+
+    /* Red clickable circle */
+    .click-circle {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      border-radius: 50%;
+      display: inline-block;      /* Or float: left; */
+      position: relative;         /* So the white square can be positioned inside */
+      cursor: pointer;            /* Show that it's clickable */
+      margin-right: 20px;         /* Spacing before the black rectangle */
+    }
+
+    /* The white square that starts hidden */
+    .white-square {
+      width: 50px;
+      height: 50px;
+      background-color: white;
+
+      /* Position it in the center of the circle */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      display: none; /* Hidden by default */
+    }
+
+    /* When the circle has the .show-square class, show the white square */
+    .click-circle.show-square .white-square {
+      display: block;
+    }
+
+    /* Black rectangle */
+    .color-rectangle {
+      width: 100px;
+      height: 50px;
+      background-color: black;
+      display: inline-block;  /* or float: left; */
+    }
+
+    /* Ensure the response section goes underneath */
+    .response-section {
+      clear: both;     /* Push below floated or inline elements */
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
 
 <div class="main-section">
-  <!-- Red clickable circle & black rectangle -->
-  <div class="click-circle" id="clickCircle"></div>
+  <!-- Red clickable circle -->
+  <div class="click-circle" id="clickCircle">
+    <!-- White square hidden inside -->
+    <div class="white-square" id="whiteSquare"></div>
+  </div>
+
+  <!-- Black rectangle -->
   <div class="color-rectangle" id="colorRectangle"></div>   
 
-  <!-- Force the response section below the floats -->
+  <!-- Response section below -->
   <div class="response-section">
     <label for="response">Response:</label>
-    <input type="text" id="response" name="response" placeholder="Will update after you submit above...">
+    <input type="text" id="response" name="Response" placeholder="Enter something...">
   </div>
 </div>
+
+<script>
+  // When the circle is clicked, toggle a class that shows the white square
+  const circle = document.getElementById("clickCircle");
+  circle.addEventListener("click", function() {
+    circle.classList.toggle("show-square");
+  });
+</script>
+
+</body>
+</html>
