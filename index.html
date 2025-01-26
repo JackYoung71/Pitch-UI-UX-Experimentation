@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pitch</title>
 
+  <!-- Link to Google Fonts for IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
     /* Overall page styling */
@@ -54,20 +56,16 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      
     }
     .pitch-circle-icon {
-      width: 30px;
-      height: 30px;
-      background-color: red;
-      border-radius: 50%;
+      width: 40px; /* Adjusted size as needed */
+      height: 40px; /* Adjusted size as needed */
+      object-fit: contain; /* Ensures the entire logo is visible */
     }
     .pitch-title {
       font-size: 2rem;
-      font-weight: regular;
+      font-weight: normal; /* Changed from 'regular' to 'normal' */
       margin: 0;
-      
-      /* Removed incorrect font property */
     }
 
     .circle-rectangle-response-container {
@@ -165,7 +163,7 @@
     .response-section label {
       display: block;
       margin-bottom: 5px; /* small gap above the textarea */
-      font-weight: regular;
+      font-weight: normal; /* Changed from 'regular' to 'normal' */
     }
 
     /*
@@ -177,13 +175,13 @@
       font-size: 1rem;  /* Adjust text size if needed */
       resize: none;     /* Remove manual resizer handle (optional) */
       font-family: 'GT', monospace; /* Apply the "GT" font */
-      font-weight: regular; /* Make text bold */
+      font-weight: bold; /* Make text bold */
     }
 
     /* Define the "GT" font using @font-face */
     @font-face {
       font-family: 'GT';
-      src: url('GT-Regular.ttf') format('truetype');
+      src: url('fonts/GT-Regular.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
@@ -254,7 +252,7 @@
   <div class="main-section">
     <!-- Absolutely positioned "Pitch" title in top-left corner -->
     <div class="pitch-title-container">
-      <div class="pitch-circle-icon"></div>
+      <img src="PitchLogo.png" alt="PitchLogo" class="pitch-circle-icon">
       <h1 class="pitch-title">PITCH</h1>
     </div>
 
