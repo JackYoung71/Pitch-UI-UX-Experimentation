@@ -14,7 +14,8 @@
       height: 100%; /* Allow full-height flex layout */
     }
     body {
-      display: flex; /* We'll use flex to keep the left toolbar & main section side by side */
+      /* Keep the left toolbar and main section side by side */
+      display: flex;
     }
 
     /* Left customize toolbar styling */
@@ -28,20 +29,36 @@
 
     /* Main content area styling */
     .main-section {
+      /* Occupies the remaining 80% of width */
       width: 80%;
+
+      /* Center child containers horizontally, and stack them vertically */
       display: flex;
-      flex-direction: column;     /* Stack elements vertically */
-      justify-content: center;    /* Center them vertically */
-      align-items: flex-start;  
-      margin: 0 auto; width: 80%;  /* Center them horizontally */
+      flex-direction: column;
+      justify-content: center;    /* Center them vertically in the viewport */
+      align-items: center;        /* Center them horizontally */
       min-height: 100vh;          /* Occupy full viewport height */
+      margin: 0 auto;            /* Additional measure to keep it nicely centered */
     }
 
-    /* Circle + rectangle container (so they can appear side by side at the top) */
+    /*
+      This container will hold:
+       1) The circle + rectangle row at the top
+       2) The response section below
+      We align these items to the left inside this container, even though
+      the container itself is centered by .main-section.
+    */
+    .circle-rectangle-response-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;  /* Left-align the items internally */
+    }
+
+    /* Circle + rectangle container side by side */
     .circle-rectangle-container {
       display: flex;
-      gap: 20px;                  /* Space between circle and rectangle container */
-      margin-bottom: 20px;        /* Extra space below them before the response section */
+      gap: 20px;               /* Space between circle and rectangle */
+      margin-bottom: 20px;     /* Extra space before the response section */
     }
 
     /* Labels for radio and checkbox groups in the sidebar */
@@ -60,8 +77,8 @@
     /* Each radio button on its own line */
     .radio-group label,
     .checkbox-group label {
-      display: block;      /* Put each option on its own line */
-      font-weight: normal; /* Remove bold for individual items if desired */
+      display: block;         /* Put each option on its own line */
+      font-weight: normal;    /* Remove bold for individual items if desired */
       margin-bottom: 0.5rem;
     }
 
@@ -80,13 +97,11 @@
       width: 50px;
       height: 50px;
       background-color: white;
-
       /* Center it inside the circle */
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-
       display: none; /* Hidden by default */
     }
 
@@ -127,7 +142,7 @@
       border-radius: 25px;  /* Match the rectangle's corner radius, if desired */
     }
 
-    /* Response section goes below */
+    /* Response section goes below the circle & rectangle */
     .response-section {
       margin-top: 20px; /* Space above the response section */
     }
@@ -195,29 +210,32 @@
 
   <!-- Main Section -->
   <div class="main-section">
-    <div class="circle-rectangle-container">
-      <!-- Red circle + white square -->
-      <div class="click-circle" id="clickCircle">
-        <div class="white-square" id="whiteSquare"></div>
+    <!-- Parent container that is centered by .main-section, but left-aligns its contents -->
+    <div class="circle-rectangle-response-container">
+      <div class="circle-rectangle-container">
+        <!-- Red circle + white square -->
+        <div class="click-circle" id="clickCircle">
+          <div class="white-square" id="whiteSquare"></div>
+        </div>
+
+        <!-- Rectangle wrapper for black rectangle + overlay image -->
+        <div class="rectangle-wrapper">
+          <div class="color-rectangle" id="colorRectangle"></div>
+          <!-- Replace the src with your actual image -->
+          <img
+            src="soundwaves.png" 
+            alt="I love boobs"
+            class="overlay-image"
+            id="overlayImage"
+          >
+        </div>
       </div>
 
-      <!-- Rectangle wrapper for black rectangle + overlay image -->
-      <div class="rectangle-wrapper">
-        <div class="color-rectangle" id="colorRectangle"></div>
-        <!-- Replace the src with your actual image -->
-        <img
-          src="soundwaves.png" alt="I love boobs"
-          alt="Overlay"
-          class="overlay-image"
-          id="overlayImage"
-        >
+      <!-- Response section below, left-aligned with circle above -->
+      <div class="response-section">
+        <label for="response">Response:</label>
+        <input type="text" id="response" name="Response" placeholder="Enter something...">
       </div>
-    </div>
-
-    <!-- Response section below -->
-    <div class="response-section">
-      <label for="response">Response:</label>
-      <input type="text" id="response" name="Response" placeholder="Enter something...">
     </div>
   </div>
 
@@ -228,11 +246,11 @@
       let userInput = document.getElementById("other").value;
       // Set the second text box to display the same text
       document.getElementById("response").value = userInput;
-      // Return false to prevent the page from refreshing
+      // Return false to prevent page refresh
       return false;
     }
 
-    // Audience size
+    // Audience Size
     let audienceSize = null;
     const radioButtons = document.querySelectorAll('input[name="audienceSize"]');
     radioButtons.forEach((radio) => {
@@ -242,7 +260,7 @@
       });
     });
 
-    // Circle toggle to show/hide the white square + overlay image
+    // Circle toggles white square + overlay image
     const circle = document.getElementById("clickCircle");
     const overlayImage = document.getElementById("overlayImage");
 
