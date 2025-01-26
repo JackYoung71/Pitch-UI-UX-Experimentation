@@ -147,7 +147,7 @@
 
     <!-- Other with fill in the blank -->
     <label for="otherInput">Other</label>
-    <input type="text" id="otherInput" name="other" placeholder="Type here..." />
+    <input type="text" id="other" name="other" placeholder="Type here..." />
   </div>
 
   <!-- Main Content Section -->
@@ -162,6 +162,20 @@
 
   <!-- Simple JavaScript to handle user selections and color change -->
   <script>
+    function captureInput() {
+      // Get the value from the text box
+      let userInput = document.getElementById("other").value;
+      
+      // Here 'userInput' is your variable holding the text
+      console.log("User typed:", userInput);
+      
+      // You can do anything you want with 'userInput' here
+      document.getElementById("secondInput").value = userInput;
+
+      // Return false to prevent form from refreshing the page (alternative to event.preventDefault())
+      return false;
+    }
+    
     // This variable will store the audience size chosen by the user.
     let audienceSize = null;
 
