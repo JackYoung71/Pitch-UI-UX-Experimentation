@@ -382,11 +382,14 @@
       // Toggle the overlay image
       if (overlayImage.style.display === "none" || overlayImage.style.display === "") {
         overlayImage.style.display = "block";
+        document.getElementById("response").value = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHH";
+    
       } else {
         overlayImage.style.display = "none";
-      }
-      document.getElementById("response").value = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHH";
+        document.getElementById("response").value = "";
     
+      }
+      
     });
   </script>
 </body>
