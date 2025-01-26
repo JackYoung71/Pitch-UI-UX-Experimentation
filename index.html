@@ -37,6 +37,32 @@
       align-items: center;        /* Center them horizontally */
       min-height: 100vh;          /* Occupy full viewport height */
       margin: 0 auto;
+      position: relative;         /* So we can absolutely position the Pitch title */
+    }
+
+    /*
+      Absolutely positioned container for the red circle and "Pitch" heading
+      in the top-left corner of .main-section. This won't shift other elements.
+    */
+    .pitch-title-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px;
+    }
+    .pitch-circle-icon {
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      border-radius: 50%;
+    }
+    .pitch-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 0;
     }
 
     .circle-rectangle-response-container {
@@ -59,12 +85,10 @@
       margin-top: 1rem;
       margin-bottom: 0.5rem;
     }
-
     .radio-group,
     .checkbox-group {
       margin-left: 1rem;
     }
-
     /* Put each radio/checkbox on its own line */
     .radio-group label,
     .checkbox-group label {
@@ -139,11 +163,11 @@
 
     /*
       Match the rectangle's width (700px) and
-      be ~10 times taller than the 100px rectangle = 1000px
+      be 200px tall (instead of 1000px).
     */
     #response {
       width: 700px;
-      height: 400px;
+      height: 200px;
       font-size: 1rem;  /* Adjust text size if needed */
       resize: none;     /* Remove manual resizer handle (optional) */
     }
@@ -211,7 +235,13 @@
 
   <!-- Main Section (right side) -->
   <div class="main-section">
-    <!-- This container is centered horizontally, but internally left-aligns its items -->
+    <!-- Absolutely positioned "Pitch" title in top-left corner -->
+    <div class="pitch-title-container">
+      <div class="pitch-circle-icon"></div>
+      <h1 class="pitch-title">Pitch</h1>
+    </div>
+
+    <!-- Container that holds circle/rectangle row + response below -->
     <div class="circle-rectangle-response-container">
       <div class="circle-rectangle-container">
         <!-- Red circle + white square -->
@@ -232,7 +262,7 @@
         </div>
       </div>
 
-      <!-- Response section below, label above the textbox -->
+      <!-- Response section below, label above the textarea -->
       <div class="response-section">
         <label for="response">Response:</label>
         <textarea id="response" name="Response" placeholder="Enter something..."></textarea>
