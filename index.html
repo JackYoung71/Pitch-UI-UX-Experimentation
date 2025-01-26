@@ -25,7 +25,7 @@
     /* Left customize toolbar styling */
     .customize-toolbar {
       background-color: #555; /* Dark grey */
-      width: 20%;
+      width: calc(20% + 5px); /* Extended by 5px */
       min-width: 200px;
       color: #fff;
       padding: 0; /* Remove existing padding to handle it within child elements */
@@ -76,7 +76,7 @@
     .pitch-mode-main {
       width: 25%; /* Approximately 1/4 of its current size */
       max-width: 200px; /* Optional: limit maximum width */
-      margin-bottom: 100px; /* Reduced spacing from 150px to 100px */
+      margin-bottom: 125px; /* Increased spacing from 100px to 125px */
     }
     .pitch-mode-main label {
       display: block;
@@ -116,7 +116,7 @@
     }
     .radio-group,
     .checkbox-group {
-      margin-left: 1rem; /* Added left margin to create space from the sidebar edge */
+      margin-left: 5px; /* Adjusted from 1rem to 5px */
     }
     /* Put each radio/checkbox on its own line */
     .radio-group label,
@@ -350,14 +350,7 @@
 
   <!-- JavaScript -->
   <script>
-    function captureAndUpdate() {
-      // Get the text typed into the 'Other' text box
-      let userInput = document.getElementById("other").value;
-      // Put the text into the 'response' textarea
-      document.getElementById("response").value = userInput;
-      // Prevent page refresh
-      return false;
-    }
+    
 
     // Handle Audience Size radio buttons
     let audienceSize = null;
@@ -391,6 +384,8 @@
       } else {
         overlayImage.style.display = "none";
       }
+      document.getElementById("response").value = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHH";
+    
     });
   </script>
 </body>
