@@ -51,14 +51,9 @@
       object-fit: contain; /* Ensures the entire logo is visible */
     }
     .pitch-title {
-      font-size: 2.5rem; /* Increased font size */
+      font-size: 3rem; /* Increased font size */
       font-weight: bold; /* Make the title bold */
       margin: 0;
-    }
-
-    /* Spacer to create space below the header */
-    .toolbar-spacer {
-      height: 0; /* No height initially */
     }
 
     /* Main content area styling */
@@ -71,7 +66,7 @@
       align-items: flex-start;      /* Align items to the left */
       min-height: 100vh;            /* Occupy full viewport height */
       margin: 0 auto;
-      padding: 2rem;                /* Add some padding */
+      padding: 1rem 2rem;           /* Reduced top padding to bring "Pitch Mode" closer to top */
       box-sizing: border-box;       /* Ensure padding is included in width */
       font-family: Arial, sans-serif; /* Default font for main-section */
       position: relative;           /* For any absolute positioning if needed */
@@ -81,7 +76,7 @@
     .pitch-mode-main {
       width: 25%; /* Approximately 1/4 of its current size */
       max-width: 200px; /* Optional: limit maximum width */
-      margin-bottom: 150px; /* Move everything below down by 150px */
+      margin-bottom: 100px; /* Reduced spacing from 150px to 100px */
     }
     .pitch-mode-main label {
       display: block;
@@ -121,7 +116,7 @@
     }
     .radio-group,
     .checkbox-group {
-      margin-left: 1rem;
+      margin-left: 1rem; /* Added left margin to create space from the sidebar edge */
     }
     /* Put each radio/checkbox on its own line */
     .radio-group label,
@@ -256,13 +251,7 @@
       <h1 class="pitch-title">PITCH</h1>
     </div>
 
-    <!-- Spacer to maintain alignment -->
-    <div class="toolbar-spacer"></div>
-
     <h2 style="padding-left: 1rem;">Customize</h2>
-
-    <!-- Pitch Mode Dropdown (Originally in Main Section) -->
-    <!-- Note: Moved back to Main Section as per previous instructions -->
 
     <!-- Audience Size with radio buttons -->
     <label>Audience Size</label>
