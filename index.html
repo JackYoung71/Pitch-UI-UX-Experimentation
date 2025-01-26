@@ -156,7 +156,7 @@
       <div class="click-circle" id="clickCircle"></div>
       <div class="color-rectangle" id="colorRectangle"></div>   
     <br>
-    <label for="otherInput">Other</label>
+    <label for="otherInput">Response</label>
     <input type="text" id="Response" name="response" placeholder="responseeee" />
   </div>
 
@@ -170,7 +170,7 @@
       console.log("User typed:", userInput);
       
       // You can do anything you want with 'userInput' here
-      document.getElementById("secondInput").value = userInput;
+      document.getElementById("Response").value = userInput;
 
       // Return false to prevent form from refreshing the page (alternative to event.preventDefault())
       return false;
