@@ -215,15 +215,13 @@
       width: 100%; /* Start fully covering the image */
       height: 100%;
       background-color: white; /* Same as container background */
-      transform: scaleX(1); /* Initial scale */
-      transform-origin: left; /* Scale from the left */
-      transition: transform 2s ease-in-out; /* Smooth transition */
+      transition: width 2s ease-in-out; /* Smooth transition */
       z-index: 3; /* Above the image */
       pointer-events: none; /* Allows clicks to pass through */
     }
 
     .image-overlay.reveal {
-      transform: scaleX(0); /* Reveal the image by shrinking the overlay */
+      width: 0%; /* Reveal the image by shrinking the overlay */
     }
 
     /* Response section below */
